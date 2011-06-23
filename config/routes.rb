@@ -1,4 +1,8 @@
 TeachPlanner::Application.routes.draw do
+  resources :subjects
+
+  resources :units
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
