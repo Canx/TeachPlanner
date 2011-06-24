@@ -26,7 +26,7 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'rspec-rails', ">=2.6.0"
   gem 'capybara'
-
+  gem 'launchy'
   gem 'turn', :require => false
 end
 

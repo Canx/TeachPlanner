@@ -9,17 +9,15 @@ feature "unidades didácticas", %q{
  
   background do
     Unit.create!(:title => 'Cableado estructurado')
-    Subject.create!(:title => 'Redes Locales')
+    Program.create!(:module => 'Redes Locales')
   end
 
-  scenario "Vincular unidad didáctica a asignatura" do
-    visit '/subjects'
-    page.should have_content('Subjects')
-    # Por acabar
-    # - Seleccionar la asignatura
-    # - Hacer click en unidades didácticas
-    # - Seleccionar unidad didáctica de cableado estructurado
-    # - Hacer click en añadir unidad didáctica
+  scenario "Add new unit to existing program" do
+    visit '/programs/1'
+    page.should have_content('Redes Locales')
+    #save_and_open_page    
+    select "Cableado estructurado", :from => "Unidad"
+    click_button "Añadir unidad"
     # - Comprobar en base de datos que se ha vinculado
   end
 

@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<div id="side">
+  <strong>Páginas</strong>
+  <ul>
+    <li><%= link_to "Inicio", root_path %></li>
+    <li><%= link_to "Programas", programs_path %></li>
+    <li><%= link_to "Unidades", units_path %></li>
+  </ul>
+</div>
+
 <%= yield %>
 
 </body>
