@@ -8,14 +8,24 @@ feature "unidades didácticas", %q{
 } do
  
   background do
-    Unit.create!(:title => 'Cableado estructurado')
-    Program.create!(:module => 'Redes Locales')
+    u1=Unit.create!(:title => 'Cableado estructurado')
+    u2=Unit.create!(:title => 'Capa fisica')
+    u3=Unit.create!(:title => 'Capa de enlace')
+    p=Program.create!(:module => 'Redes Locales')
+    p.units << u1
+    p.units << u2
+  end
+
+  scenario "Show units from program" do
+    visit '/programs/1'
+    save_and_open_page
+    page.should have_content('Cableado estructurado')
+    page.should have_content('Capa fisica')
   end
 
   scenario "Add new unit to existing program" do
     visit '/programs/1'
     page.should have_content('Redes Locales')
-    #save_and_open_page    
     select "Cableado estructurado", :from => "Unidad"
     click_button "Añadir unidad"
     # - Comprobar en base de datos que se ha vinculado

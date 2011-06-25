@@ -3,6 +3,13 @@
 <p>
   <b>Module:</b>
   <%= @program.module %>
+  <br>
+  <b>Units:</b>
+  <ul>
+    <% @program.units.each do |unit| %>
+    <li><%= unit.title %></li>
+    <% end %>
+  </ul>
 </p>
 
 
