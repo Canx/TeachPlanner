@@ -80,4 +80,12 @@ class ProgramsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def add_unit
+    @program = Program.find(params[:id])
+ 
+    #TODO: obtener solo las unidades que no tiene ya el programa.
+    @units = Unit.all
+  end
 end
+

@@ -1,7 +1,8 @@
 TeachPlanner::Application.routes.draw do
-  resources :programs
-
-  resources :units, :programs
+  resources :units
+  resources :programs do
+    resources :units, :controller => "program_units"
+  end
 
   root :to => 'programs#index'
   # The priority is based upon order of creation:

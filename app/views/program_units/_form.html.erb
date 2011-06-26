@@ -1,0 +1,1 @@
+<%= select "unit", "unit_id", Unit.all.collect {|u| [u.title, u.id] }, {:prompt => "Select unit"} %>

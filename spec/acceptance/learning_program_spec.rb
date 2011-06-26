@@ -18,7 +18,7 @@ feature "unidades didácticas", %q{
 
   scenario "Show units from program" do
     visit '/programs/1'
-    save_and_open_page
+    click_link 'Units'
     page.should have_content('Cableado estructurado')
     page.should have_content('Capa fisica')
   end
@@ -26,9 +26,14 @@ feature "unidades didácticas", %q{
   scenario "Add new unit to existing program" do
     visit '/programs/1'
     page.should have_content('Redes Locales')
-    select "Cableado estructurado", :from => "Unidad"
-    click_button "Añadir unidad"
-    # - Comprobar en base de datos que se ha vinculado
+    click_link 'Units'
+    click_link "Add Unit"
+    select "Capa de enlace", :from => "unit[unit_id]"
+    click_link "Add"
+    # comprobar mensaje
+    visit 'programs/1'
+    click_link 'Units'
+    page.should have_content('Capa de enlace')
   end
 
   scenario "Desvincular unidad didáctica de asignatura" do 
